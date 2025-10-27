@@ -1,4 +1,4 @@
-from serpapi import GoogleSearch
+from serpapi import Client
 from typing import List, Dict, Any, Optional
 import logging
 
@@ -10,6 +10,7 @@ class RestaurantSearchHandler:
 
     def __init__(self, api_key: str):
         self.api_key = api_key
+        self.client = Client(api_key=api_key)
 
     def search_restaurants(
         self,
@@ -32,16 +33,14 @@ class RestaurantSearchHandler:
             search_params = {
                 "engine": "google_maps",
                 "q": query,
-                "type": "search",
-                "api_key": self.api_key
+                "type": "search"
             }
 
             if location:
                 search_params["ll"] = f"@{location}"
 
-            # Execute search
-            search = GoogleSearch(search_params)
-            results = search.get_dict()
+            # Execute search using the new Client API
+            results = self.client.search(search_params)
 
             # Parse and format results
             restaurants = []

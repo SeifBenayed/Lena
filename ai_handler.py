@@ -11,7 +11,7 @@ class AIConversationHandler:
 
     def __init__(self, api_key: str):
         self.client = Anthropic(api_key=api_key)
-        self.model = "claude-3-5-sonnet-20241022"
+        self.model = "claude-3-5-sonnet-20241022"  # Latest stable model
         self.conversation_history: Dict[str, List[Dict[str, str]]] = {}
 
     def get_conversation_history(self, user_id: str) -> List[Dict[str, str]]:
