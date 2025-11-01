@@ -11,7 +11,7 @@ class WhatsAppHandler:
     def __init__(self, phone_number_id: str, access_token: str):
         self.phone_number_id = phone_number_id
         self.access_token = access_token
-        self.base_url = f"https://graph.facebook.com/v18.0/{phone_number_id}/messages"
+        self.base_url = f"https://graph.facebook.com/v22.0/{phone_number_id}/messages"
         self.headers = {
             "Authorization": f"Bearer {access_token}",
             "Content-Type": "application/json"
